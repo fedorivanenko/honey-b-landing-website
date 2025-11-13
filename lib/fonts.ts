@@ -1,13 +1,14 @@
-import { Geist, Geist_Mono } from 'next/font/google'
-      //TODO: change fonts
-export const geist = Geist({
+import { Poly, Inter } from 'next/font/google'
+
+export const poly = Poly({
   subsets: ['latin'],
-  variable: '--font-geist-sans',
+  weight: "400",
+  variable: '--font-poly-serif',
   display: 'swap',
 })
 
-export const geistMono = Geist_Mono({
+export const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-inter-sans',
   display: 'swap',
 })
