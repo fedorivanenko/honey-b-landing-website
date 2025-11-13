@@ -36,7 +36,7 @@ export async function GET(req: Request) {
     (
       <div
         style={{
-          fontFamily: "Geist",
+          fontFamily: "Poly",
           background: "#171717",
           color: "#f7f7f7",
           width: "100%",
@@ -67,21 +67,20 @@ export async function GET(req: Request) {
       </div>
     ),
     {
-      //TODO: change fonts
       width: 1200,
       height: 630,
       fonts: [
         {
-          name: "Geist",
-          data: await loadGoogleFont("Geist", title + description, 400),
+          name: "Inter",
+          data: await loadGoogleFont("Inter", title + description, 400),
           style: "normal",
           weight: 400,
         },
         {
-          name: "Geist",
-          data: await loadGoogleFont("Geist", title + description, 600),
+          name: "Poly",
+          data: await loadGoogleFont("Poly", title + description, 400),
           style: "normal",
-          weight: 600,
+          weight: 400,
         },
       ],
     }
