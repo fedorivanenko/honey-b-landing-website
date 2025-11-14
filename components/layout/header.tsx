@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
+import Image from "next/image";
 
 type menuEl = {
     label: string
@@ -46,10 +47,18 @@ function Menu() {
   );
 }
 
+function MenuLogo() {
+  return (
+    <div className="relative w-22 h-8">
+      <Image src="/logo.svg" alt="Logo" fill className="object-contain" />
+    </div>
+  );
+}
+
 export default function Header() {
   return (
     <header className="sticky top-0 lg:relative items-center gap-8">
-      Logo
+      <MenuLogo />
       <Menu />
     </header>
   );
