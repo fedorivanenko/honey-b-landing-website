@@ -1,5 +1,6 @@
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
+import { ContactForm } from "./page.client";
 
 function HeroImage(){
 
@@ -51,10 +52,19 @@ function HeroSection() {
   );
 }
 
+function ContactSection() {
+  return (
+    <Section className="mb-80">
+      <ContactForm/>
+    </Section>
+  )
+}
+
 export default function Home() {
   return (
     <article>
       <HeroSection />
+      <ContactSection/>
     </article>
   );
 }

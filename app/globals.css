@@ -140,7 +140,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground-secondary flex flex-col min-h-svh mt-0 lg:mt-20;
+    @apply bg-background text-foreground-secondary flex flex-col min-h-svh mt-0 lg:mt-15;
   }
   main {
     @apply w-full flex flex-col max-w-screen-xl;
