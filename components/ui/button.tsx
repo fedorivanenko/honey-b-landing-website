@@ -12,9 +12,11 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-      },
+        link: "text-primary underline-offset-4 hover:underline data-[disabled]:text-foreground-secondary data-[disabled]:no-underline data-[disabled]:hover:no-underline data-[disabled]:cursor-not-allowed",
+        },
       size: {
         default: "px-5 py-2 has-[>svg]:px-3",
+        inline: ""
       },
     },
     defaultVariants: {

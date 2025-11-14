@@ -140,19 +140,22 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground-secondary flex flex-col min-h-svh;
+    @apply bg-background text-foreground-secondary flex flex-col min-h-svh mt-0 lg:mt-20;
   }
   main {
     @apply w-full flex flex-col max-w-screen-xl;
   }
-  article, footer, header {
+  article {
     @apply flex px-4 sm:px-10 lg:px-25;
   }
   article {
-    @apply flex-col space-y-75
+    @apply flex-col space-y-75;
   }
   footer, header {
-    @apply flex-row
+    @apply flex flex-row px-5 pt-0 lg:px-25 lg:pt-0;
+  }
+  header {
+   @apply py-4 
   }
 }
 
