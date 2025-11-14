@@ -1,6 +1,6 @@
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import { ContactForm } from "./page.client";
+import { ContactForm, CopyEmail } from "./page.client";
 
 function HeroImage(){
 
@@ -54,8 +54,49 @@ function HeroSection() {
 
 function ContactSection() {
   return (
-    <Section className="mb-80">
+    <Section className="flex flex-col lg:flex-row mb-80 sm:items-center gap-18.5">
+      <div className="flex flex-col lg:pb-20 space-y-2 sm:mx-auto lg:mr-auto lg:ml-0 sm:items-center lg:items-start ">
+        <h2 className="mb-2">Get in Touch</h2>
+        <p className="mb-8">or contact us by email</p>
+        <CopyEmail/>
+      </div>
       <ContactForm/>
+    </Section>
+  )
+}
+
+interface InstitutionalCardProps {
+  label: string
+  header: string
+  text: string
+}
+
+function IntitutionalCard({ label, header, text}:InstitutionalCardProps){
+return (
+  <div>
+    
+  </div>
+)
+}
+
+const IntitutionalCardsData = [
+
+ ] satisfies InstitutionalCardProps[];
+
+function InstitutionalSection() {
+  return (
+    <Section>
+      <ul>
+
+      </ul>
+    </Section>
+  )
+}
+
+function HowItWorksSection() {
+  return (
+    <Section>
+
     </Section>
   )
 }
@@ -64,6 +105,8 @@ export default function Home() {
   return (
     <article>
       <HeroSection />
+      <InstitutionalSection/>
+      <HowItWorksSection/>
       <ContactSection/>
     </article>
   );

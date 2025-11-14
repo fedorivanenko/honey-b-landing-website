@@ -1,20 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { toast } from "sonner";
 
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
-import { contactFormSchema } from "@/db/zod";
+import { contactPayloadSchema, ContactPayload } from "@/lib/contact";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
 function ContactForm() {
-  const form = useForm<z.infer<typeof contactFormSchema>>({
+  const form = useForm<ContactPayload>({
     mode: "onChange",
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(contactPayloadSchema),
     defaultValues: {
       fullName: "",
       email: "",
@@ -23,11 +24,45 @@ function ContactForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof contactFormSchema>) {}
+  const isSubmitting = form.formState.isSubmitting;
+
+  async function onSubmit(data: ContactPayload) {
+    try {
+      const payload = {
+        fullName: data.fullName,
+        email: data.email,
+        organization: data.organization,
+        message: data.message?.trim() || undefined,
+      };
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result?.error ?? "Unable to submit form");
+      }
+
+      form.reset();
+      toast.success("Thanks! We’ll be in touch shortly.");
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.";
+
+      toast.error(message);
+      form.reset(data);
+    }
+  }
 
   return (
     <form
-      className="flex flex-col border border-border space-y-4 rounded-2xl p-8.5 max-w-xl"
+      className="flex flex-col border border-border space-y-4 rounded-2xl p-6.5 sm:p-8.5 max-w-xl w-full"
       onSubmit={form.handleSubmit(onSubmit)}
     >
       <Controller
@@ -119,11 +154,37 @@ function ContactForm() {
           </Field>
         )}
       />
-      <Button type="submit" className="h-16 mt-7 text-base rounded-2xl">
-        Submit
+      <Button
+        type="submit"
+        className="h-16 mt-7 text-base rounded-2xl"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? "Submitting..." : "Submit"}
       </Button>
     </form>
   );
 }
 
-export { ContactForm };
+import { Copy } from "lucide-react";
+
+function CopyEmail() {
+  const [copied, setCopied] = useState(false);
+
+  async function copy() {
+    await navigator.clipboard.writeText("contact@example.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
+  return (
+    <Button
+      onClick={copy} 
+      variant={'secondary'}
+      className="w-58 cursor-copy"
+    >
+      {copied ? "Copied!" : <><Copy />contact@example.com</>}
+    </Button>
+  );
+}
+
+export { ContactForm, CopyEmail };

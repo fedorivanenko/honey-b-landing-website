@@ -1,10 +1,4 @@
-import {
-  pgTable,
-  uuid,
-  varchar,
-  timestamp,
-  text,
-} from "drizzle-orm/pg-core"
+import { pgTable, uuid, varchar, timestamp, text } from "drizzle-orm/pg-core";
 
 export const contacts = pgTable("contacts", {
   id: uuid("id").primaryKey().defaultRandom(),
@@ -14,4 +8,4 @@ export const contacts = pgTable("contacts", {
   organization: varchar("organization", { length: 255 }),
   message: varchar("message", { length: 2000 }),
   idempotencyKey: text("idempotency_key").notNull().unique(),
-})
+});
