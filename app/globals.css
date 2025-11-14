@@ -161,13 +161,13 @@
 
 @layer typography {
   h1,h2,h3 {
-    @apply leading-tight font-serif text-foreground;
+    @apply leading-tight font-serif text-foreground -translate-x-[0.0625em];
   }
   h1 {
     @apply text-xl sm:text-2xl;
   }
   h2 {
-    @apply text-xl-minus sm:text-xl;
+    @apply text-xl-minus sm:text-xl mb-2;
   }
   h3 {
     @apply text-lg;
