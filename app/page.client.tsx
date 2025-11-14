@@ -48,14 +48,14 @@ function ContactForm() {
       }
 
       form.reset();
-      toast.success("Thanks! We’ll be in touch shortly.");
+      toast("Thanks! We’ll be in touch shortly.");
     } catch (error) {
       const message =
         error instanceof Error
           ? error.message
           : "Something went wrong. Please try again.";
 
-      toast.error(message);
+      toast(message);
       form.reset(data);
     }
   }
