@@ -13,17 +13,19 @@ export interface UseScrollOptions {
 
 export function useScroll(options: UseScrollOptions = {}) {
   const { target, container, disabled } = options;
+  const resolvedTarget = target?.current ?? null;
+  const resolvedContainer = container?.current ?? null;
 
   useEffect(() => {
     if (disabled) return;
 
     configureScrollStore({
-      target: target?.current ?? null,
-      container: container?.current ?? null,
+      target: resolvedTarget,
+      container: resolvedContainer,
     });
 
     initScrollEvents();
-  }, [target, container, disabled]);
+  }, [resolvedTarget, resolvedContainer, disabled]);
 
   return useScrollStore();
 }

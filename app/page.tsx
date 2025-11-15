@@ -149,11 +149,13 @@ function InstitutionalSection() {
   return (
     <Section>
       <h2>Institutional by Design</h2>
-      <ul className="flex gap-5">
+      <div className="-mx-4 sm:-mx-10 lg:-mx-25 px-4 sm:px-10 lg:px-25 overflow-scroll pb-5">
+      <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-360">
         {InstitutionalCardsData.map((card) => (
           <IntitutionalCard {...card} key={card.label} />
         ))}
       </ul>
+      </div>
     </Section>
   );
 }

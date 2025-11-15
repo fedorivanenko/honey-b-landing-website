@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { contactPayloadSchema, ContactPayload } from "@/lib/contact";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { useScroll } from "@/hooks/use-scroll";
 
 function ContactForm() {
   const form = useForm<ContactPayload>({
@@ -192,18 +193,48 @@ type AddHoverStateProps = {
 }
 
 function AddHoverState({ id }: AddHoverStateProps) {
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const pointerHoverRef = useRef(false);
+  const centerHoverRef = useRef(false);
+  const { scrollX, scrollY } = useScroll();
+
+  const updateHoverState = useCallback(() => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const isHovering = pointerHoverRef.current || centerHoverRef.current;
+    el.setAttribute("data-hover", isHovering ? "true" : "false");
+  }, [id]);
+
   const handleEnter = () => {
-    const el = document.getElementById(id)
-    if (el) el.setAttribute("data-hover", "true")
-  }
+    pointerHoverRef.current = true;
+    updateHoverState();
+  };
 
   const handleLeave = () => {
-    const el = document.getElementById(id)
-    if (el) el.setAttribute("data-hover", "false")
-  }
+    pointerHoverRef.current = false;
+    updateHoverState();
+  };
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    const rect = overlay.getBoundingClientRect();
+    const centerY = window.innerHeight / 2;
+
+    const overlapsCenter =
+      rect.top <= centerY && rect.bottom >= centerY;
+
+    if (centerHoverRef.current !== overlapsCenter) {
+      centerHoverRef.current = overlapsCenter;
+      updateHoverState();
+    }
+  }, [scrollX, scrollY, updateHoverState]);
 
   return (
     <div
+      ref={overlayRef}
       className="absolute inset-0 z-10 cursor-pointer"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}

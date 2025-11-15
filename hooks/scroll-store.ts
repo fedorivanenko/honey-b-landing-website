@@ -10,7 +10,7 @@ export interface ScrollState {
 const clamp = (v: number) => Math.max(0, Math.min(1, v));
 
 /** Internal mutable state */
-const state: ScrollState = {
+let state: ScrollState = {
   scrollX: 0,
   scrollY: 0,
   scrollXProgress: 0,
@@ -102,7 +102,7 @@ function update() {
     return;
   }
 
-  Object.assign(state, next);
+  state = next;
 
   listeners.forEach((fn) => fn());
 }
