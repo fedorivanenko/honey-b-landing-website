@@ -28,8 +28,8 @@ function HeroImage() {
 
 function HeroSection() {
   return (
-    <Section className="lg:h-[86dvh] lg:flex-row gap-10">
-      <div className="relative mx-auto lg:mx-0 w-fit flex flex-col text-center lg:text-left mt-22.5 ">
+    <Section className="lg:h-[86dvh] lg:flex-row gap-40">
+      <div className="relative mx-auto lg:mx-0 w-fit h-fit flex flex-col text-center lg:text-left mt-22.5 ">
         <h1 className="mb-6 whitespace-nowrap">
           <em>Honey</em> from
           <br />
@@ -50,13 +50,13 @@ function HeroSection() {
           <Button>Request Access</Button>
           <Button variant={"secondary"}>Contact</Button>
         </div>
-        <div className="lg:absolute bottom-0 mt-18.75 lg:mt-0 left-0 flex flex-col lg:flex-row gap-10 whitespace-nowrap">
+        <div className="lg:absolute -bottom-32 mt-18.75 lg:mt-0 left-0 flex flex-col lg:flex-row gap-10 whitespace-nowrap">
           <div>
-          <p className="text-base-plus text-foreground mb-3">$100T+ Fixed-Income Market</p>
+          <p className="text-base-plus text-foreground mb-2">$100T+ Fixed-Income Market</p>
           <p>Access tokenized treasuries and credit.</p>
           </div>
           <div>
-          <p className="text-base-plus text-foreground mb-3">$2.5–5% Target APY</p>
+          <p className="text-base-plus text-foreground mb-2">$2.5–5% Target APY</p>
           <p>Backed by predictable cash flows. †</p>
           </div>
         </div>

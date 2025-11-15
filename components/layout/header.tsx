@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import { MenuIcon, X } from "lucide-react";
 
 type menuEl = {
     label: string
@@ -37,9 +38,9 @@ function Menu() {
       </div>
       {/* Mobile */}
       <Sheet>
-        <SheetTrigger className="ml-auto lg:hidden">Open</SheetTrigger>
+        <SheetTrigger className="ml-auto lg:hidden"><MenuIcon className="h-8 w-8"/></SheetTrigger>
         <SheetContent>
-          <SheetClose>Close</SheetClose>
+          <SheetClose><X className="h-8 w-8"/></SheetClose>
           <MenuContent />
         </SheetContent>
       </Sheet>
@@ -49,7 +50,7 @@ function Menu() {
 
 function MenuLogo() {
   return (
-    <div className="relative w-22 h-8">
+    <div className="relative w-24 h-6">
       <Image src="/logo.svg" alt="Logo" fill className="object-contain" />
     </div>
   );
@@ -57,7 +58,7 @@ function MenuLogo() {
 
 export default function Header() {
   return (
-    <header className="sticky top-0 lg:relative items-center gap-8">
+    <header className="sticky top-0 lg:relative lg:mt-12.5 items-center gap-8 z-50">
       <MenuLogo />
       <Menu />
     </header>

@@ -154,7 +154,7 @@
     @apply flex px-4 sm:px-10 lg:px-25 flex-col space-y-27.5 lg:space-y-75 ;
   }
   footer, header {
-    @apply flex flex-row px-5 pt-0 lg:px-25 lg:pt-0;
+    @apply flex flex-row px-6.25 pt-0 lg:px-25 lg:pt-0;
   }
   header {
    @apply py-4 
