@@ -130,7 +130,7 @@ function IntitutionalCard(card: InstitutionalCardProps) {
 
       <div
         className={cn(
-          "absolute px-5 left-0 top-[calc(100%-160px)] sm:top-[calc(100%-90px)] transition-transform duration-250",
+          "absolute px-5 pr-10 left-0 top-[calc(100%-120px)] sm:top-[calc(100%-90px)] transition-transform duration-250",
           "group-data-[hover=true]:-translate-y-40"
         )}
       >
@@ -172,24 +172,24 @@ function InstitutionalSection() {
 // HOW TO WORK
 
 interface HowToWorkCardProps {
-  step: number;
+  step: string;
   title: string;
   text: string;
 }
 
 const HowToWorkCardData: HowToWorkCardProps[] = [
   {
-    step: 1,
+    step: "01",
     title: "Verify",
     text: "Permissions set, custody stays put.",
   },
   {
-    step: 2,
+    step: "02",
     title: "Allocate",
     text: "Pick a strategy; mint your on-chain position.",
   },
   {
-    step: 3,
+    step: "03",
     title: "Harvest",
     text: "Earn yield, monitor, redeem.",
   },
@@ -204,11 +204,11 @@ function HowToWorkCard(card: HowToWorkCardProps) {
     <li 
     id={id} 
     data-hover="false"
-    className="group relative px-7 pb-8 pt-0 -mt-2 min-w-60 max-w-60 w-full aspect-[0.63] flex flex-col space-y-4">
+    className="group bg-background relative px-7 pb-11.5 sm:pb-8 pt-0 -mt-2 min-w-60 sm:max-w-80 lg:max-w-60 w-full aspect-square lg:aspect-2/3 flex flex-col space-y-4">
       <AddHoverState id={id} />
       <p className="text-3xl font-serif text-foreground/5 group-data-[hover=true]:text-accent-step-2/20 transition-colors duration-250">{card.step}</p>
       <h4 className="mt-auto">{card.title}</h4>
-      <p>{card.text}</p>
+      <p className="max-w-[18ch]">{card.text}</p>
     </li>
   );
 }
@@ -216,7 +216,7 @@ function HowToWorkCard(card: HowToWorkCardProps) {
 
 function HowItWorksSection() {
   return (
-    <Section className="flex flex-col xl:flex-row space-y-15">
+    <Section className="relative flex flex-col xl:flex-row space-y-15 overflow-hidden">
       <div className="w-full">
         <h2>How it Works</h2>
         <p>Keep your custodian. Use our rails.</p>
