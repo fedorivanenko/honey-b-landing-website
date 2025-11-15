@@ -9,7 +9,7 @@ function HeroImage() {
   const panelNumber = 11;
 
   return (
-    <div aria-hidden className="h-full w-full py-[20%] lg:py-[15%] px-[20%] lg:px-0 relative">
+    <div aria-hidden className="h-full w-full py-[15%] lg:py-[15%] px-[15%] lg:px-0 relative">
       <div className="absolute my-[25%] inset-0 z-20">
         <Image src="/bitcoin.webp" alt="bitcoin logo" fill className="object-contain" />
       </div>
