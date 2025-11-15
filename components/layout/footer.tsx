@@ -7,17 +7,17 @@ import Telegram from '@/components/icons/telegram.svg'
 export default function Footer() {
   return (
     <footer className="mb-20 mt-50 sm:mt-75 text-muted-foreground">
-      <div className="flex justify-between w-full items-end">
+      <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-end space-y-20">
         <div className="flex flex-col space-y-11.5">
           <Logo className="w-[278px] h-[66px]" />
-        <p className="w-120">
+        <p className="max-w-120">
           HoneyB is a digital asset platform. Use involves risk, including
-          possible loss of funds. Services are provided “as is” without
-          warranties, and HoneyB is not liable for any losses.
+          possible loss of funds. Services are provided “as&nbsp;is” without
+          warranties, and HoneyB is not liable for any&nbsp;losses.
         </p>
         </div>
-        <div className="flex flex-col space-y-6.5">
-          <div className="flex gap-7.5 justify-end">
+        <div className="flex flex-col space-y-6">
+          <div className="flex gap-7.5">
             <Link href="/">
               <Twitter className="w-5 h-5" />
             </Link>
