@@ -145,13 +145,13 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground-secondary flex flex-col min-h-svh mt-0 lg:mt-15;
+    @apply bg-background text-foreground-secondary flex flex-col min-h-svh mt-0;
   }
   main {
     @apply w-full flex flex-col max-w-screen-xl mx-auto;
   }
   article {
-    @apply flex px-4 sm:px-10 lg:px-25 flex-col space-y-75 ;
+    @apply flex px-4 sm:px-10 lg:px-25 flex-col space-y-27.5 lg:space-y-75 ;
   }
   footer, header {
     @apply flex flex-row px-5 pt-0 lg:px-25 lg:pt-0;

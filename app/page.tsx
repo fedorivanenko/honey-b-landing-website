@@ -29,7 +29,7 @@ function HeroImage() {
 function HeroSection() {
   return (
     <Section className="lg:h-[86dvh] lg:flex-row gap-10">
-      <div className="mx-auto lg:mx-0 w-fit flex flex-col text-center lg:text-left lg:mt-25">
+      <div className="relative mx-auto lg:mx-0 w-fit flex flex-col text-center lg:text-left mt-22.5 ">
         <h1 className="mb-6 whitespace-nowrap">
           <em>Honey</em> from
           <br />
@@ -50,7 +50,16 @@ function HeroSection() {
           <Button>Request Access</Button>
           <Button variant={"secondary"}>Contact</Button>
         </div>
-        <div className="mt-auto"></div>
+        <div className="lg:absolute bottom-0 mt-18.75 lg:mt-0 left-0 flex flex-col lg:flex-row gap-10 whitespace-nowrap">
+          <div>
+          <p className="text-base-plus text-foreground mb-3">$100T+ Fixed-Income Market</p>
+          <p>Access tokenized treasuries and credit.</p>
+          </div>
+          <div>
+          <p className="text-base-plus text-foreground mb-3">$2.5–5% Target APY</p>
+          <p>Backed by predictable cash flows. †</p>
+          </div>
+        </div>
       </div>
       <div className="hidden lg:block max-w-[75dvw] h-full ml-auto">
         <HeroImage />
@@ -159,7 +168,7 @@ function InstitutionalSection() {
       <div className="absolute h-full hidden sm:block -left-4 sm:-left-10 lg:-left-25 top-0 w-20 z-40 bg-linear-to-l from-transparent to-background"/>
       <div className="absolute h-full hidden sm:block -right-4 sm:-right-10 lg:-right-25 top-0 w-20 z-40 bg-linear-to-r from-transparent to-background"/>
       <div className="-mx-4 sm:-mx-10 lg:-mx-25 px-4 sm:px-10 lg:px-25 overflow-scroll pb-5">
-        <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-360">
+        <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-280 lg:w-360">
           {InstitutionalCardsData.map((card) => (
             <IntitutionalCard {...card} key={card.label} />
           ))}
