@@ -1,6 +1,7 @@
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
 import { ContactForm, CopyEmail } from "./page.client";
+import { cn } from "@/lib/utils";
 
 function HeroImage() {
   const panelNumber = 11;
@@ -56,7 +57,7 @@ function HeroSection() {
 function ContactSection() {
   return (
     <Section className="flex flex-col lg:flex-row mb-80 sm:items-center gap-18.5">
-      <div className="flex flex-col lg:pb-20 space-y-2 sm:mx-auto lg:mr-auto lg:ml-0 sm:items-center lg:items-start ">
+      <div className="flex flex-col lg:pb-20 sm:mx-auto lg:mr-auto lg:ml-0 sm:items-center lg:items-start ">
         <h2>Get in Touch</h2>
         <p className="mb-8">or contact us by email</p>
         <CopyEmail />
@@ -70,16 +71,6 @@ interface InstitutionalCardProps {
   label: string;
   title: string;
   text: string;
-}
-
-function IntitutionalCard(card: InstitutionalCardProps) {
-  return (
-    <li>
-      <p>{card.label}</p>
-      <p>{card.title}</p>
-      <p>{card.text}</p>
-    </li>
-  );
 }
 
 const InstitutionalCardsData = [
@@ -105,11 +96,31 @@ const InstitutionalCardsData = [
   },
 ] satisfies InstitutionalCardProps[];
 
+function IntitutionalCard(card: InstitutionalCardProps) {
+  return (
+    <li
+      className={cn(
+        "group flex flex-col w-full overflow-hidden relative aspect-3/4 rounded-2xl pt-7 px-5",
+        "border border-border hover:bg-accent hover:border-accent-border transition-colors duration-200"
+      )}
+    >
+      <div className="absolute inset-0 opacity-0 blur-sm group-hover:opacity-70 transition-opacity duration-200 bg-[radial-gradient(50%_70%_at_50%_120%,var(--accent-step-1),var(--accent-step-2),transparent_70%)]" />
+      <p className="mb-auto">{card.label}</p>
+      <div className="absolute left-5 top-[calc(100%-90px)] group-hover:-translate-y-40 transition-transform duration-250">
+        <h3>{card.title}</h3>
+        <p className="opacity-0 blur-sm group-hover:blur-none group-hover:opacity-100 transition-all duration-250">
+          {card.text}
+        </p>
+      </div>
+    </li>
+  );
+}
+
 function InstitutionalSection() {
   return (
     <Section>
       <h2>Institutional by Design</h2>
-      <ul>
+      <ul className="flex gap-5">
         {InstitutionalCardsData.map((card) => (
           <IntitutionalCard {...card} key={card.label} />
         ))}
