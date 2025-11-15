@@ -9,7 +9,7 @@ function HeroImage() {
 
   return (
     <div className="h-full w-full py-[20%] lg:py-[15%] px-[20%] lg:px-0 relative">
-      <div className="h-full aspect-square mx-auto bg-accent-step-1 rounded-full" />
+      <div  className="h-full aspect-square mx-auto rounded-full bg-linear-to-b from-accent-step-1 to-accent-step-2" />
       <div className="absolute inset-0 z-10 flex divide-background/32 divide-x">
         {Array.from({ length: panelNumber }).map((_, i) => (
           <div

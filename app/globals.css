@@ -31,6 +31,7 @@
   --color-accent-step-1: var(--accent-step-1);
   --color-accent-step-2: var(--accent-step-2);
   --color-accent-border: var(--accent-border);
+  --color-accent-black: var(--accent-black);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -84,6 +85,7 @@
   --accent-step-1: oklch(0.63 0.21 36);
   --accent-step-2: oklch(0.73 0.165 65);
   --accent-border: oklch(0.88 0.025 78.9);
+  --accent-black: oklch(0.14 0.075 65);
   --accent-foreground: oklch(0 0 0);
   --destructive: oklch(0.63 0.2425 36);
   --border: oklch(0.8925 0 0);

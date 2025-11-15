@@ -157,7 +157,7 @@ function ContactForm() {
       />
       <Button
         type="submit"
-        className="h-16 mt-7 text-base rounded-2xl"
+        className="h-16 mt-7 text-base rounded-2xl cursor-pointer transition-color duration-250"
         disabled={isSubmitting}
       >
         {isSubmitting ? "Submitting..." : "Submit"}
