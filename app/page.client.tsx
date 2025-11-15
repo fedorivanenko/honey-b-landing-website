@@ -187,4 +187,29 @@ function CopyEmail() {
   );
 }
 
-export { ContactForm, CopyEmail };
+type AddHoverStateProps = {
+  id: string
+}
+
+function AddHoverState({ id }: AddHoverStateProps) {
+  const handleEnter = () => {
+    const el = document.getElementById(id)
+    if (el) el.setAttribute("data-hover", "true")
+  }
+
+  const handleLeave = () => {
+    const el = document.getElementById(id)
+    if (el) el.setAttribute("data-hover", "false")
+  }
+
+  return (
+    <div
+      className="absolute inset-0 z-10 cursor-pointer"
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+    />
+  )
+}
+
+
+export { ContactForm, CopyEmail, AddHoverState };

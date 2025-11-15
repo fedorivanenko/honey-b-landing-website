@@ -1,7 +1,8 @@
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import { ContactForm, CopyEmail } from "./page.client";
+import { AddHoverState, ContactForm, CopyEmail } from "./page.client";
 import { cn } from "@/lib/utils";
+import { useId } from "react";
 
 function HeroImage() {
   const panelNumber = 11;
@@ -97,24 +98,52 @@ const InstitutionalCardsData = [
 ] satisfies InstitutionalCardProps[];
 
 function IntitutionalCard(card: InstitutionalCardProps) {
+  const id = useId()
+
   return (
     <li
+      id={id}
+      data-hover="false"
       className={cn(
         "group flex flex-col w-full overflow-hidden relative aspect-3/4 rounded-2xl pt-7 px-5",
-        "border border-border hover:bg-accent hover:border-accent-border transition-colors duration-200"
+        "border border-border transition-colors duration-200",
+        "data-[hover=true]:bg-accent data-[hover=true]:border-accent-border"
       )}
     >
-      <div className="absolute inset-0 opacity-0 blur-sm group-hover:opacity-70 transition-opacity duration-200 bg-[radial-gradient(50%_70%_at_50%_120%,var(--accent-step-1),var(--accent-step-2),transparent_70%)]" />
+      <AddHoverState id={id} />
+
+      <div
+        className={cn(
+          "absolute inset-0 opacity-0 blur-sm transition-opacity duration-200",
+          "bg-[radial-gradient(50%_70%_at_50%_120%,var(--accent-step-1),var(--accent-step-2),transparent_70%)]",
+          "group-data-[hover=true]:opacity-70"
+        )}
+      />
+
       <p className="mb-auto">{card.label}</p>
-      <div className="absolute left-5 top-[calc(100%-90px)] group-hover:-translate-y-40 transition-transform duration-250">
+
+      <div
+        className={cn(
+          "absolute left-5 top-[calc(100%-90px)] transition-transform duration-250",
+          "group-data-[hover=true]:-translate-y-40"
+        )}
+      >
         <h3>{card.title}</h3>
-        <p className="opacity-0 blur-sm group-hover:blur-none group-hover:opacity-100 transition-all duration-250">
+
+        <p
+          className={cn(
+            "opacity-0 blur-sm transition-all duration-250",
+            "group-data-[hover=true]:opacity-100",
+            "group-data-[hover=true]:blur-none"
+          )}
+        >
           {card.text}
         </p>
       </div>
     </li>
-  );
+  )
 }
+
 
 function InstitutionalSection() {
   return (
