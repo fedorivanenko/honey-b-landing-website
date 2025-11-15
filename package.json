@@ -33,6 +33,8 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@iconify/react": "^6.0.2",
+    "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

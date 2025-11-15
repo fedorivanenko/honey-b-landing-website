@@ -70,7 +70,7 @@ function HeroSection() {
 
 function ContactSection() {
   return (
-    <Section className="flex flex-col lg:flex-row mb-80 sm:items-center gap-18.5">
+    <Section className="flex flex-col lg:flex-row sm:items-center gap-18.5">
       <div className="flex flex-col lg:pb-20 sm:mx-auto lg:mr-auto lg:ml-0 sm:items-center lg:items-start ">
         <h2>Get in Touch</h2>
         <p className="mb-8">or contact us by email</p>

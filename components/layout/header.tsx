@@ -48,10 +48,12 @@ function Menu() {
   );
 }
 
+import Logo from '@/components/icons/logo.svg'
+
 function MenuLogo() {
   return (
-    <div className="relative w-24 h-6">
-      <Image src="/logo.svg" alt="Logo" fill className="object-contain" />
+    <div className="w-24 h-6 text-foreground">
+      <Logo />
     </div>
   );
 }
