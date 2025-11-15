@@ -3,13 +3,17 @@ import { Button } from "@/components/ui/button";
 import { AddHoverState, ContactForm, CopyEmail } from "./page.client";
 import { cn } from "@/lib/utils";
 import { useId } from "react";
+import Image from "next/image";
 
 function HeroImage() {
   const panelNumber = 11;
 
   return (
-    <div className="h-full w-full py-[20%] lg:py-[15%] px-[20%] lg:px-0 relative">
-      <div  className="h-full aspect-square mx-auto rounded-full bg-linear-to-b from-accent-step-1 to-accent-step-2" />
+    <div aria-hidden className="h-full w-full py-[20%] lg:py-[15%] px-[20%] lg:px-0 relative">
+      <div className="absolute my-[25%] inset-0 z-20">
+        <Image src="/bitcoin.webp" alt="bitcoin logo" fill className="object-contain" />
+      </div>
+      <div className="h-full aspect-square mx-auto rounded-full bg-linear-to-b from-accent-step-1 to-accent-step-2" />
       <div className="absolute inset-0 z-10 flex divide-background/32 divide-x">
         {Array.from({ length: panelNumber }).map((_, i) => (
           <div
@@ -25,7 +29,7 @@ function HeroImage() {
 function HeroSection() {
   return (
     <Section className="lg:h-[86dvh] lg:flex-row gap-10">
-      <div className="mx-auto lg:mx-0 w-fit flex flex-col text-center lg:text-left lg:mt-20">
+      <div className="mx-auto lg:mx-0 w-fit flex flex-col text-center lg:text-left lg:mt-25">
         <h1 className="mb-6 whitespace-nowrap">
           <em>Honey</em> from
           <br />
@@ -97,6 +101,7 @@ const InstitutionalCardsData = [
   },
 ] satisfies InstitutionalCardProps[];
 
+
 function IntitutionalCard(card: InstitutionalCardProps) {
   const id = useId()
 
@@ -148,8 +153,9 @@ function IntitutionalCard(card: InstitutionalCardProps) {
 
 function InstitutionalSection() {
   return (
-    <Section className="flex-col">
+    <Section className="flex-col relative">
       <h2 className="mb-15!">Institutional by Design</h2>
+      <div className="absolute h-full hidden sm:block -right-4 sm:-right-10 lg:-right-25 top-0 w-20 z-40 bg-linear-to-r from-transparent to-background"/>
       <div className="-mx-4 sm:-mx-10 lg:-mx-25 px-4 sm:px-10 lg:px-25 overflow-scroll pb-5">
         <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-360">
           {InstitutionalCardsData.map((card) => (
@@ -187,9 +193,9 @@ const HowToWorkCardData: HowToWorkCardProps[] = [
 
 function HowToWorkCard(card: HowToWorkCardProps) {
   return (
-    <li>
-      <p>{card.step}</p>
-      <p>{card.title}</p>
+    <li className="bg-amber-200/20 px-7 pb-8 pt-0 -mt-2 min-w-60 w-full aspect-[0.63] flex flex-col space-y-4">
+      <p className="text-3xl font-serif">{card.step}</p>
+      <h4 className="mt-auto">{card.title}</h4>
       <p>{card.text}</p>
     </li>
   );
@@ -197,10 +203,12 @@ function HowToWorkCard(card: HowToWorkCardProps) {
 
 function HowItWorksSection() {
   return (
-    <Section>
-      <h2>How it Works</h2>
-      <p>Keep your custodian. Use our rails.</p>
-      <ul>
+    <Section className="flex flex-col lg:flex-row">
+      <div className="w-full">
+        <h2>How it Works</h2>
+        <p>Keep your custodian. Use our rails.</p>
+      </div>
+      <ul className="flex gap-4.5">
         {HowToWorkCardData.map((card) => (
           <HowToWorkCard key={card.step} {...card} />
         ))}
