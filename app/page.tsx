@@ -216,12 +216,21 @@ function HowToWorkCard(card: HowToWorkCardProps) {
 
 function HowItWorksSection() {
   return (
-    <Section className="relative flex flex-col xl:flex-row space-y-15 overflow-hidden">
+    <Section className="relative flex flex-col xl:flex-row space-y-15">
       <div className="w-full">
         <h2>How it Works</h2>
         <p>Keep your custodian. Use our rails.</p>
       </div>
-      <ul className="flex gap-4.5">
+
+      <div
+        id="gradinet"
+        aria-hidden
+        className="pointer-events-none absolute inset-0 blur-2xl opacity-40"
+      >
+        <div className="absolute -rotate-6 right-0 bottom-0 translate-x-1/2 translate-y-1/6 lg:translate-y-1/2 w-full h-[120%] sm:h-[80%] xl:h-[150%] rounded-full bg-[radial-gradient(100%_100%_at_50%_50%,var(--accent-step-1),var(--accent-step-2),transparent_50%)]" />
+      </div>
+
+      <ul className="flex gap-4.5 flex-col sm:flex-row">
         {HowToWorkCardData.map((card) => (
           <HowToWorkCard key={card.step} {...card} />
         ))}
