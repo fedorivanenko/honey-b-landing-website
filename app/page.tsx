@@ -155,6 +155,8 @@ function InstitutionalSection() {
   return (
     <Section className="flex-col relative">
       <h2 className="mb-15!">Institutional by Design</h2>
+      {/* TODO: not elegant but works */}
+      <div className="absolute h-full hidden sm:block -left-4 sm:-left-10 lg:-left-25 top-0 w-20 z-40 bg-linear-to-l from-transparent to-background"/>
       <div className="absolute h-full hidden sm:block -right-4 sm:-right-10 lg:-right-25 top-0 w-20 z-40 bg-linear-to-r from-transparent to-background"/>
       <div className="-mx-4 sm:-mx-10 lg:-mx-25 px-4 sm:px-10 lg:px-25 overflow-scroll pb-5">
         <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-360">
