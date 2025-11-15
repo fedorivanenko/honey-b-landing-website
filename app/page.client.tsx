@@ -261,6 +261,7 @@ function AddHoverState({ id }: AddHoverStateProps) {
   return (
     <div
       ref={overlayRef}
+      /* parent should be relative */
       className="absolute inset-0 z-10 cursor-pointer pointer-events-auto select-none"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}

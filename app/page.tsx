@@ -169,6 +169,8 @@ function InstitutionalSection() {
   );
 }
 
+// HOW TO WORK
+
 interface HowToWorkCardProps {
   step: number;
   title: string;
@@ -193,19 +195,28 @@ const HowToWorkCardData: HowToWorkCardProps[] = [
   },
 ];
 
+
 function HowToWorkCard(card: HowToWorkCardProps) {
+
+  const id = useId()
+
   return (
-    <li className="bg-amber-200/20 px-7 pb-8 pt-0 -mt-2 min-w-60 w-full aspect-[0.63] flex flex-col space-y-4">
-      <p className="text-3xl font-serif">{card.step}</p>
+    <li 
+    id={id} 
+    data-hover="false"
+    className="group relative px-7 pb-8 pt-0 -mt-2 min-w-60 max-w-60 w-full aspect-[0.63] flex flex-col space-y-4">
+      <AddHoverState id={id} />
+      <p className="text-3xl font-serif text-foreground/5 group-data-[hover=true]:text-accent-step-2/20 transition-colors duration-250">{card.step}</p>
       <h4 className="mt-auto">{card.title}</h4>
       <p>{card.text}</p>
     </li>
   );
 }
 
+
 function HowItWorksSection() {
   return (
-    <Section className="flex flex-col lg:flex-row">
+    <Section className="flex flex-col xl:flex-row space-y-15">
       <div className="w-full">
         <h2>How it Works</h2>
         <p>Keep your custodian. Use our rails.</p>
