@@ -7,7 +7,7 @@ import Telegram from '@/components/icons/telegram.svg'
 export default function Footer() {
   return (
     <footer className="mb-20 mt-50 sm:mt-75 text-muted-foreground">
-      <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-end space-y-20">
+      <div className="flex flex-col lg:flex-row lg:justify-between w-full lg:items-end space-y-20 sm:space-y-0">
         <div className="flex flex-col space-y-11.5">
           <Logo className="w-[278px] h-[66px]" />
         <p className="max-w-120">
