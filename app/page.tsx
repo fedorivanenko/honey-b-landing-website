@@ -29,7 +29,7 @@ function HeroImage() {
 function HeroSection() {
   return (
     <Section className="lg:h-[86dvh] lg:flex-row gap-40">
-      <div className="relative mx-auto lg:mx-0 w-fit h-fit flex flex-col text-center lg:text-left mt-22.5 ">
+      <div className="relative mx-auto lg:mx-0 w-fit h-fit flex flex-col text-center lg:text-left mt-22.5 overflow-hidden">
         <h1 className="mb-6 whitespace-nowrap">
           <em>Honey</em> from
           <br />
@@ -38,7 +38,7 @@ function HeroSection() {
         <p className="text-lg-minus sm:text-lg-plus mb-7 w-0 min-w-full">
           Put your Bitcoin to work
         </p>
-        <div className="w-[75dvw] mx-auto lg:hidden mb-7">
+        <div className="w-[90dvw] mx-auto lg:hidden mb-7">
           <HeroImage />
         </div>
         <p className="mb-9 w-0 min-w-full px-10 sm:px-[15%] lg:px-0">
