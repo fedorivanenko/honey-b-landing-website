@@ -29,7 +29,7 @@ function HeroImage() {
 function HeroSection() {
   return (
     <Section className="lg:h-[86dvh] lg:flex-row gap-40">
-      <div className="relative mx-auto lg:mx-0 w-fit h-fit flex flex-col text-center lg:text-left mt-22.5 overflow-hidden">
+      <div className="relative mx-auto lg:mx-0 w-fit h-fit flex flex-col text-center lg:text-left mt-22.5">
         <h1 className="mb-6 whitespace-nowrap">
           <em>Honey</em> from
           <br />
