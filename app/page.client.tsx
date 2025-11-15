@@ -196,7 +196,8 @@ function AddHoverState({ id }: AddHoverStateProps) {
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const pointerHoverRef = useRef(false);
   const centerHoverRef = useRef(false);
-  const { scrollX, scrollY } = useScroll();
+  const { scrollY } = useScroll();
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const updateHoverState = useCallback(() => {
     const el = document.getElementById(id);
@@ -217,6 +218,31 @@ function AddHoverState({ id }: AddHoverStateProps) {
   };
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 512px)");
+
+    const applyMatch = (matches: boolean) => {
+      setIsSmallScreen(matches);
+
+      if (!matches && centerHoverRef.current) {
+        centerHoverRef.current = false;
+        updateHoverState();
+      }
+    };
+
+    applyMatch(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      applyMatch(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, [updateHoverState]);
+
+  useEffect(() => {
+    if (!isSmallScreen) return;
+
     const overlay = overlayRef.current;
     if (!overlay) return;
 
@@ -230,14 +256,15 @@ function AddHoverState({ id }: AddHoverStateProps) {
       centerHoverRef.current = overlapsCenter;
       updateHoverState();
     }
-  }, [scrollX, scrollY, updateHoverState]);
+  }, [isSmallScreen, scrollY, updateHoverState]);
 
   return (
     <div
       ref={overlayRef}
-      className="absolute inset-0 z-10 cursor-pointer"
+      className="absolute inset-0 z-10 cursor-pointer pointer-events-auto select-none"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
+      onClick={(e) => e.stopPropagation()}
     />
   )
 }

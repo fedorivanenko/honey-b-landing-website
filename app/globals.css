@@ -54,6 +54,7 @@
   --text-2xl: 4.25rem;       /*  68 px */
   --text-xl: 3rem;           /*  48 px */
   --text-xl-minus: 2.25rem;   /* 36 px */
+  --text-lg-plus-plus: 1.875rem;   /* 30 px */
   --text-lg-plus: 1.625rem;   /* 26 px */
   --text-lg: 1.5rem;          /* 24 px */
   --text-lg-minus: 1.25rem;   /* 24 px */
@@ -172,6 +173,6 @@
     @apply text-xl-minus sm:text-xl mb-2.5;
   }
   h3 {
-    @apply text-lg mb-2.5;
+    @apply text-lg-plus-plus sm:text-lg mb-2.5;
   }
 }

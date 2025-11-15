@@ -105,7 +105,7 @@ function IntitutionalCard(card: InstitutionalCardProps) {
       id={id}
       data-hover="false"
       className={cn(
-        "group flex flex-col w-full overflow-hidden relative aspect-3/4 rounded-2xl pt-7 px-5",
+        "group flex flex-col w-full overflow-hidden relative aspect-square sm:aspect-3/4 rounded-2xl pt-7 px-5",
         "border border-border transition-colors duration-200",
         "data-[hover=true]:bg-accent data-[hover=true]:border-accent-border"
       )}
@@ -113,18 +113,19 @@ function IntitutionalCard(card: InstitutionalCardProps) {
       <AddHoverState id={id} />
 
       <div
+        id="gradient"
         className={cn(
-          "absolute inset-0 opacity-0 blur-sm transition-opacity duration-200",
-          "bg-[radial-gradient(50%_70%_at_50%_120%,var(--accent-step-1),var(--accent-step-2),transparent_70%)]",
+          "absolute inset-0 opacity-0 blur-sm transition-opacity duration-200 pointer-events-none",
+          "bg-[radial-gradient(50%_90%_at_50%_120%,var(--accent-step-1),var(--accent-step-2),transparent_70%)]",
           "group-data-[hover=true]:opacity-70"
         )}
       />
 
-      <p className="mb-auto">{card.label}</p>
+      <p>{card.label}</p>
 
       <div
         className={cn(
-          "absolute left-5 top-[calc(100%-90px)] transition-transform duration-250",
+          "absolute px-5 left-0 top-[calc(100%-160px)] sm:top-[calc(100%-90px)] transition-transform duration-250",
           "group-data-[hover=true]:-translate-y-40"
         )}
       >
@@ -132,7 +133,7 @@ function IntitutionalCard(card: InstitutionalCardProps) {
 
         <p
           className={cn(
-            "opacity-0 blur-sm transition-all duration-250",
+            "mt-10 sm:mt-5 opacity-0 blur-sm transition-all duration-250",
             "group-data-[hover=true]:opacity-100",
             "group-data-[hover=true]:blur-none"
           )}
@@ -147,14 +148,14 @@ function IntitutionalCard(card: InstitutionalCardProps) {
 
 function InstitutionalSection() {
   return (
-    <Section>
-      <h2>Institutional by Design</h2>
+    <Section className="flex-col">
+      <h2 className="mb-15!">Institutional by Design</h2>
       <div className="-mx-4 sm:-mx-10 lg:-mx-25 px-4 sm:px-10 lg:px-25 overflow-scroll pb-5">
-      <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-360">
-        {InstitutionalCardsData.map((card) => (
-          <IntitutionalCard {...card} key={card.label} />
-        ))}
-      </ul>
+        <ul className="grid grid-cols-1 w-auto sm:grid-cols-4 gap-5 sm:w-360">
+          {InstitutionalCardsData.map((card) => (
+            <IntitutionalCard {...card} key={card.label} />
+          ))}
+        </ul>
       </div>
     </Section>
   );
